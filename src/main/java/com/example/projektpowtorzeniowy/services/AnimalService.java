@@ -1,7 +1,7 @@
 package com.example.projektpowtorzeniowy.services;
 
 import com.example.projektpowtorzeniowy.model.Animal;
-import com.example.projektpowtorzeniowy.repository.AnimalRepository;
+import com.example.projektpowtorzeniowy.repository.repositories.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
