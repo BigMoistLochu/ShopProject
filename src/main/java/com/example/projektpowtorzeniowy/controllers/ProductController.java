@@ -1,12 +1,12 @@
 package com.example.projektpowtorzeniowy.controllers;
 
+import com.example.projektpowtorzeniowy.exceptions.ProduktNotFoundException;
 import com.example.projektpowtorzeniowy.model.Product;
 import com.example.projektpowtorzeniowy.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
 public class ProductController {
@@ -21,10 +21,36 @@ public class ProductController {
     }
 
 
+
+
     @GetMapping("/produkty")
-    public List<Product> getAllOfProducts()
+    public Iterable<Product> getAllOfProducts()
     {
         return productService.getAllProducts();
     }
+
+
+    @GetMapping("/produkty/{id}")
+    public Product getProductById(@PathVariable Long id)
+    {
+        return productService.getProductById(id).orElseThrow(() -> new ProduktNotFoundException(id));
+    }
+
+    @PostMapping("/produkty/add")
+    public void  addProductToDataBaseMemory(@RequestBody Product product)
+    {
+        productService.addProduct(product);
+    }
+
+
+
+
+    @DeleteMapping("/produkty/delete/{id}")
+    public void  deleteProductToDataBaseMemory(@PathVariable Long id)
+    {
+        productService.deleteProduct(id);
+    }
+
+
 
 }
