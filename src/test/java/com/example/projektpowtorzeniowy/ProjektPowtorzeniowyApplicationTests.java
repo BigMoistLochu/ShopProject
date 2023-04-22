@@ -12,9 +12,9 @@ class ProjektPowtorzeniowyApplicationTests {
         //adnotacja test
         //slowo kluczowe funkcji zaczyna sie shouldAddToNumbers albo should_Add_To_Numbers
         //3 stage:
-        //given
-        //when
-        //then
+        //given // tutaj dostarczamy zasoby ktore sa nam potrzebne do testowania
+        //when  //tutaj najczesciej mowimy co ma sie stac gdy beda podane parametry
+        //then //tutaj rezultat
     }
 
 }

@@ -5,6 +5,7 @@ import com.example.projektpowtorzeniowy.services.AnimalService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class AnimalController {
 
     AnimalService animalService;
@@ -27,6 +29,7 @@ public class AnimalController {
     @GetMapping("/animals")
     public List<Animal> ListOfAnimal()
     {
+        log.info("Handling animals list request");
         return animalService.returnListOfAnimals();
     }
 
