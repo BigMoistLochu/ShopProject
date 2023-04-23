@@ -16,6 +16,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 import java.util.List;
 
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -30,15 +32,15 @@ public class SecurityConfig {
                         .build()
         );
     }
-    //(auth -> auth
-    //                        .anyRequest().authenticated())
-    //                .httpBasic(Customizer.withDefaults())
-    //                .build();
+
+
+
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .cors(Customizer.withDefaults()) // by default uses a Bean by the name of corsConfigurationSource
-                .authorizeRequests().anyRequest().permitAll().and().build();
+                .authorizeRequests().anyRequest().permitAll().and().build();//set to all reguest(we will add if you want use Cart then you should login
     }
 
 
