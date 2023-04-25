@@ -41,5 +41,11 @@ public class Product {
         this.image = image;
     }
 
+    public Product(String title, double price, String image) {
+        this.title = title;
+        this.price = price;
+        this.image = image;
+    }
+
 
 }

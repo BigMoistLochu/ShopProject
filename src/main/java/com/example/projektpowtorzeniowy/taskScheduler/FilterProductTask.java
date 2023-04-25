@@ -27,7 +27,7 @@ public class FilterProductTask {
 
 
 
-    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "* */10 * * * *")
     public void FilterProductBeforeAddToDataBase()
     {
         //funkcja zaciagajac produkty z publicznego api sprawdza czy taki element
