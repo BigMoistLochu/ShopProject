@@ -27,7 +27,7 @@ public class FilterProductTask {
 
 
 
-    @Scheduled(cron = "* */10 * * * *")
+    @Scheduled(cron = "*/30 * * * * *")
     public void FilterProductBeforeAddToDataBase()
     {
         //funkcja zaciagajac produkty z publicznego api sprawdza czy taki element
@@ -46,6 +46,7 @@ public class FilterProductTask {
                     }
                 }).map(product -> repositoryProvider.getProductRepository()
                         .save(product)).toList();
+        log.info("skonczylem filtrowac");
     }
 
 
