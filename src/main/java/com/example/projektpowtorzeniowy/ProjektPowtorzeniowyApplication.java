@@ -4,6 +4,7 @@ import com.example.projektpowtorzeniowy.apiPublic.ApiProviderData;
 import com.example.projektpowtorzeniowy.apiPublic.WebScrapperProviderData;
 import com.example.projektpowtorzeniowy.mappers.MapperProvider;
 import com.example.projektpowtorzeniowy.model.Product;
+import com.example.projektpowtorzeniowy.model.contracts.ProductDto;
 import com.example.projektpowtorzeniowy.repository.RepositoryProvider;
 import com.example.projektpowtorzeniowy.taskScheduler.FilterProductTask;
 import lombok.extern.slf4j.Slf4j;
@@ -48,7 +49,7 @@ public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
     @Override
     public void run(String... args){
         log.info("Start Aplikacji");
-
-        webScrapperProviderData.getProductsFromWebsite();
+        List<ProductDto> list = webScrapperProviderData.getProductsFromWebsite();
+        System.out.println(list);
     }
 }

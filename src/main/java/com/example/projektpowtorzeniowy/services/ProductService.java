@@ -31,11 +31,6 @@ public class ProductService {
 
     public void addProduct(Product product)
     {
-//        Product productDto = new Product();
-//        productDto.setIdOfProduct(product.getIdOfProduct());
-//        productDto.setPrice(product.getPrice());
-//        productDto.setTitle(product.getTitle());
-//        productDto.setImage(product.getImage());
         repositoryProvider.getProductRepository().save(product);
     }
 
