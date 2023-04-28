@@ -1,5 +1,7 @@
 package com.example.projektpowtorzeniowy.apiPublic;
 
+import com.example.projektpowtorzeniowy.apiPublic.textContainer.EnumText;
+import com.example.projektpowtorzeniowy.apiPublic.textContainer.TextContainer;
 import com.example.projektpowtorzeniowy.model.contracts.ProductDto;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
@@ -12,7 +14,7 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class WebScrapperProviderData {
+public class WebScrapperProviderData implements IWebScrapperProviderData{
 
 
     private final Playwright playwright;
@@ -30,6 +32,7 @@ public class WebScrapperProviderData {
     public WebScrapperProviderData()
     {
         log.info("tworzy sie obiekt WebScrapper");
+
         playwright = Playwright.create();
         browser = playwright.webkit().launch(); //jesli chcemy widziec przegladarke to do parametru launch(new BrowserType.LaunchOptions().setHeadless(false))
         page = browser.newPage();
@@ -39,47 +42,42 @@ public class WebScrapperProviderData {
     public List<ProductDto> getProductsFromWebsite()
     {
         page.navigate("https://www.oleole.pl/komputery-stacjonarne-pc,komputer-dla-graczy!1.bhtml");
+
         page.waitForLoadState();
 
-        boolean xx = true;
         int startNumberFromSelector = 3;
 
-        while(true)
+        while(startNumberFromSelector<=29)
         {
 
-
-
             try {
-                //wait for load selector
-                page.waitForSelector("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h4:nth-child(1)");
+                //wait for title selector
+                page.waitForSelector(TextContainer.text(startNumberFromSelector,EnumText.TITLE));
 
                 //get Title
-                if(page.locator("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h4:nth-child(1)").isVisible())
+                if(page.locator(TextContainer.text(startNumberFromSelector,EnumText.TITLE)).isVisible())
                 {
-                    temporaryTitle = page.locator("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h4:nth-child(1)").textContent();
-                }
-                else
-                {
-                    log.info("Koniec Sciagania Danych z Webscrappera");
-                    break;
+                    temporaryTitle = page.locator(TextContainer.text(startNumberFromSelector,EnumText.TITLE))
+                            .textContent();
                 }
 
-
-                page.waitForSelector("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(4) > img:nth-child(1)");
+                //wait for image selector
+                page.waitForSelector(TextContainer.text(startNumberFromSelector,EnumText.IMAGE));
 
                 //get image
-                if(page.locator("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(4) > img:nth-child(1)").isVisible())
+                if(page.locator(TextContainer.text(startNumberFromSelector,EnumText.IMAGE)).isVisible())
                 {
-                    temporaryImage = page.locator("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(4) > img:nth-child(1)").getAttribute("src");
+                    temporaryImage = page.locator(TextContainer.text(startNumberFromSelector,EnumText.IMAGE)).getAttribute("src");
                 }
 
-                page.waitForSelector("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(4) > img:nth-child(1)");
+                //wait for price selector
+                page.waitForSelector(TextContainer.text(startNumberFromSelector,EnumText.PRICE));
 
                 //get price
-                if(page.locator("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(2) > ul:nth-child(1) > li:nth-child(1) > ems-price:nth-child(1) > div:nth-child(1) > div:nth-child(1)").isVisible())
+                if(page.locator(TextContainer.text(startNumberFromSelector,EnumText.PRICE)).isVisible())
                 {
                     String temporaryString = page
-                            .locator("ems-euro-mobile-product-medium-box.product-list__product-box:nth-child("+startNumberFromSelector+") > eui-box:nth-child(1) > a:nth-child(1) > div:nth-child(2) > ul:nth-child(1) > li:nth-child(1) > ems-price:nth-child(1) > div:nth-child(1) > div:nth-child(1)")
+                            .locator(TextContainer.text(startNumberFromSelector,EnumText.PRICE))
                             .textContent().replaceAll("([a-zA-Zł])", "").replace(" ", "");
                     temporaryPrice = Double.parseDouble(temporaryString);
                 }
@@ -98,15 +96,10 @@ public class WebScrapperProviderData {
                 log.info("Somethink wrong with WebScrapping");
             }
 
-
-
-            System.out.println(startNumberFromSelector);
             startNumberFromSelector+=2;
 
 
         }
-
-
 
         return listOfProductsFromWeb;
     }
