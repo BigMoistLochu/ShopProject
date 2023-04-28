@@ -22,7 +22,7 @@ import java.util.List;
 @Slf4j
 public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
 
-    WebScrapperProviderData webScrapperProviderData;
+
     ApiProviderData apiProviderData;
 
     RepositoryProvider repositoryProvider;
@@ -31,9 +31,9 @@ public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
     MapperProvider mapperProvider;
 
     @Autowired
-    public ProjektPowtorzeniowyApplication(ApiProviderData apiProviderData,RepositoryProvider repositoryProvider,MapperProvider mapperProvider,WebScrapperProviderData webScrapperProviderData)
+    public ProjektPowtorzeniowyApplication(ApiProviderData apiProviderData,RepositoryProvider repositoryProvider,MapperProvider mapperProvider)
     {
-        this.webScrapperProviderData = webScrapperProviderData;
+
         this.apiProviderData = apiProviderData;
         this.repositoryProvider = repositoryProvider;
         this.mapperProvider = mapperProvider;
@@ -49,7 +49,5 @@ public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
     @Override
     public void run(String... args){
         log.info("Start Aplikacji");
-        List<ProductDto> list = webScrapperProviderData.getProductsFromWebsite();
-        System.out.println(list);
     }
 }
