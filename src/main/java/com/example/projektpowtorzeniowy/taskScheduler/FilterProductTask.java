@@ -71,8 +71,6 @@ public class FilterProductTask implements IFilterProductTask{
                        .save(product))
                .toList();
         log.info("skonczylem filtrowac");
-       ;
-
     }
 
 
