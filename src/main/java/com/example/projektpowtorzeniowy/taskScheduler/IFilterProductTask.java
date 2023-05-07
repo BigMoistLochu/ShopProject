@@ -13,5 +13,5 @@ public interface IFilterProductTask {
      * Tworzony jest obiekt WebScrapper(nie jest wstrzykiwany jako bean zeby dzialal na odzielnym watku)
      *Po czym przechodzi filtracje czy czasem nie ma juz obiektow w bazie danych o podanej nazwie
      */
-    void FilterProductFromWebScrapperBeforeAddToDataBase();
+//    void FilterProductFromWebScrapperBeforeAddToDataBase();
 }
