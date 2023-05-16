@@ -10,11 +10,11 @@ import org.springframework.stereotype.Repository;
 public class RepositoryProvider implements IRepositoryProvider{
 
 
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
 
 

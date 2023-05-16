@@ -20,12 +20,12 @@ import java.util.List;
 public class FilterProductTask implements IFilterProductTask{
 
 
-    ApiProviderData apiProviderData;
+    private ApiProviderData apiProviderData;
 
-    RepositoryProvider repositoryProvider;
+    private RepositoryProvider repositoryProvider;
 
 
-    MapperProvider mapperProvider;
+    private MapperProvider mapperProvider;
 
 
 //    @Scheduled(cron = "*/56 * * * * *")

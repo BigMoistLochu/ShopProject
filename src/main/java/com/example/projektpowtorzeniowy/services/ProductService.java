@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    RepositoryProvider repositoryProvider;
+    private RepositoryProvider repositoryProvider;
 
     @Autowired
     public ProductService(RepositoryProvider repositoryProvider) {

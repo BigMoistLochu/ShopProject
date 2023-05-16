@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
 
-    ProductService productService;
+    private ProductService productService;
 
 
     @Autowired

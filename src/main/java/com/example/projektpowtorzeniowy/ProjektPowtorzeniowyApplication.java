@@ -2,9 +2,6 @@ package com.example.projektpowtorzeniowy;
 
 import com.example.projektpowtorzeniowy.apiPublic.ApiProviderData;
 import com.example.projektpowtorzeniowy.mappers.MapperProvider;
-import com.example.projektpowtorzeniowy.model.Customer;
-import com.example.projektpowtorzeniowy.model.Order;
-import com.example.projektpowtorzeniowy.model.Product;
 import com.example.projektpowtorzeniowy.repository.RepositoryProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +17,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
 
 
-    ApiProviderData apiProviderData;
+    private ApiProviderData apiProviderData;
 
-    RepositoryProvider repositoryProvider;
+    private RepositoryProvider repositoryProvider;
 
-
-    MapperProvider mapperProvider;
+    private MapperProvider mapperProvider;
 
 
 
@@ -60,7 +56,12 @@ public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
 //        repositoryProvider.getOrderRepository().save(order);
 
 
+
         System.out.println(repositoryProvider.getOrderRepository().findAll());
+
+
+
+        System.out.println(repositoryProvider.getOrderRepository().getFirstByCustomerEmailContains("Konrad.Krok@wp.pl"));
 
 
         //teraz pytanie za 100 punktow, jak zwrocic zamowienie(Order) w ktorym Customer ma email = ape@wp.pl
@@ -71,10 +72,6 @@ public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
         //== porowonuje 2 referencje i zadaje pytanie czy wskazuja na ten sam obiekt
         //equels domyslnie wskazuje na to samo bo ma this == object
         //dlatego sie go nadpisuje zeby porownac obiekty
-
-
-
-
 
     }
 }
