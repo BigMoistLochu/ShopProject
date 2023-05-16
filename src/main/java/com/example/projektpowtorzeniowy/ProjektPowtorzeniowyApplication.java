@@ -6,7 +6,6 @@ import com.example.projektpowtorzeniowy.model.Customer;
 import com.example.projektpowtorzeniowy.model.Order;
 import com.example.projektpowtorzeniowy.model.Product;
 import com.example.projektpowtorzeniowy.repository.RepositoryProvider;
-import com.example.projektpowtorzeniowy.repository.repositories.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -51,29 +50,21 @@ public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
     public void run(String... args){
         log.info("Start Aplikacji");
 
-        try {
-            Customer customer = new Customer("Konrad","ape@wp.pl");
-            repositoryProvider.getCustomerRepository().save(customer);
-            Customer customer2 = new Customer("Daniel","XD@wp.pl");
-            repositoryProvider.getCustomerRepository().save(customer2);
+//        Product product = Product.builder().title("Mlotek").price(40D).image("mlotek.png").build();
+//        repositoryProvider.getProductRepository().save(product);
+//
+//        Customer customer = Customer.builder().name("Konrad").email("Konrad.Krok@wp.pl").build();
+//        repositoryProvider.getCustomerRepository().save(customer);
+//
+//        Order order = new Order(customer,product);
+//        repositoryProvider.getOrderRepository().save(order);
 
 
-            Order order = new Order(customer);
-            Order order2 = new Order(customer2);
-            System.out.println("zara dodajemy:");
-
-            repositoryProvider.getOrderRepository().save(order);
-            repositoryProvider.getOrderRepository().save(order2);
-        }
-        catch (Exception e)
-        {
-            System.out.println("duplikacja");
-        }
-
+        System.out.println(repositoryProvider.getOrderRepository().findAll());
 
 
         //teraz pytanie za 100 punktow, jak zwrocic zamowienie(Order) w ktorym Customer ma email = ape@wp.pl
-        System.out.println(repositoryProvider.getOrderRepository().getFirstByCustomerEmailContains("XD@wp.pl").getCustomer());
+
 
         //referencja to zmienna ktora przechowuje adres pamieci gdzie znajduje sie dany obiekt
         //referencja jest product i product1

@@ -15,7 +15,6 @@ public class ProductMapper {
 
     private Product mapper(ProductDto productDto,Product product)
     {
-        product.setIdOfProduct(productDto.getId());
         product.setPrice(productDto.getPrice());
         product.setTitle(productDto.getTitle());
         product.setImage(productDto.getImage());

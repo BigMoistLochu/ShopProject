@@ -7,31 +7,30 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "myorder")
 @ToString
 @Getter
 @Setter
+@Table(name = "cart_items")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
+
+
 
     public Order(){}
 
-    public Order(Customer customer) {
+    public Order(Customer customer, Product product) {
         this.customer = customer;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
+        this.product = product;
     }
 }

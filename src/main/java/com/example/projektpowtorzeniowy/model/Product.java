@@ -8,19 +8,22 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Collection;
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
 @ToString
+@Table(name = "products")
 public class Product {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
 
-    private int idOfProduct;
-    @Column(unique = true)
     private String title;
 
     private double price;
@@ -33,12 +36,6 @@ public class Product {
     }
 
 
-    public Product(int idOfProduct, String title, double price, String image) {
-        this.idOfProduct = idOfProduct;
-        this.title = title;
-        this.price = price;
-        this.image = image;
-    }
 
     public Product(String title, double price, String image) {
         this.title = title;

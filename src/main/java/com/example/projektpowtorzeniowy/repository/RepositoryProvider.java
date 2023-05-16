@@ -16,12 +16,16 @@ public class RepositoryProvider implements IRepositoryProvider{
 
     CustomerRepository customerRepository;
 
+
+
     @Autowired
     public RepositoryProvider(ProductRepository productRepository,OrderRepository orderRepository,CustomerRepository customerRepository) {
 
         this.productRepository = productRepository;
         this.orderRepository = orderRepository;
         this.customerRepository = customerRepository;
+
+
     }
 
 
@@ -40,4 +44,6 @@ public class RepositoryProvider implements IRepositoryProvider{
     public CustomerRepository getCustomerRepository() {
         return customerRepository;
     }
+
+
 }

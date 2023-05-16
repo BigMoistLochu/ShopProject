@@ -7,7 +7,7 @@ public interface IFilterProductTask {
      * nastepnie przechodzi do filtracji ktora polega na odpytaniu bazy danych czy istnieje taki produkt
      * o tej nazwie, jesli istnieje to obiekt jest pomijany, w przeciwnym razie obiekt jest dodawany do bazy
      */
-    void FilterProductFromPublicApiBeforeAddToDataBase();
+//    void FilterProductFromPublicApiBeforeAddToDataBase();
 
     /**
      * Tworzony jest obiekt WebScrapper(nie jest wstrzykiwany jako bean zeby dzialal na odzielnym watku)
