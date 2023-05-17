@@ -109,6 +109,7 @@ public class WebScrapperProviderData implements IWebScrapperProviderData{
         productDto.setPrice(price);
         productDto.setTitle(title);
         productDto.setImage(image);
+
         return productDto;
     }
 

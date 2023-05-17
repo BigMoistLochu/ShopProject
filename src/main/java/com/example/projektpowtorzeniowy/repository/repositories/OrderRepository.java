@@ -1,8 +1,10 @@
 package com.example.projektpowtorzeniowy.repository.repositories;
 
+import com.example.projektpowtorzeniowy.model.Customer;
 import com.example.projektpowtorzeniowy.model.Order;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +17,8 @@ public interface OrderRepository extends CrudRepository<Order,Long> {
     //select * from cart_items INNER JOIN customer ON customer.id = cart_items.customer_id
 
     List<Order> findByCustomer_EmailContaining(String email);
+
+
 
 
 

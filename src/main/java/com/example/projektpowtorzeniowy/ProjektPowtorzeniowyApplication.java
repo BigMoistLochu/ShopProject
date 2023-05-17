@@ -63,7 +63,7 @@ public class ProjektPowtorzeniowyApplication implements CommandLineRunner {
 
         System.out.println(repositoryProvider.getOrderRepository().getFirstByCustomerEmailContains("Konrad.Krok@wp.pl"));
 
-
+        System.out.println(repositoryProvider.getCustomerRepository().findByXD("Konrad.Krok@wp.pl"));
         //teraz pytanie za 100 punktow, jak zwrocic zamowienie(Order) w ktorym Customer ma email = ape@wp.pl
 
 
